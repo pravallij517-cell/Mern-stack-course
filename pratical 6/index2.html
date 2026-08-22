@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors</title>
+    <style>
+        h1{
+            color:rgb(199, 5, 21);
+        }
+        
+        #green{
+           background-color:rgb(91, 194, 50);
+        }
+        .blue{
+           color:rgb(112, 13, 224);
+        }
+        /*child selector*/
+        div h3{
+            color:rgb(212, 120, 6);
+        }
+        /* descendant selector */
+        div > p{
+            color:rgb(182, 20, 133);
+        }
+        /*universal selector*/
+        *{
+            margin:0;
+            padding:0;
+        }
+        a:visited{
+            color:rgb(148, 44, 44);
+        }
+        a:link{
+            color:green;
+        }
+        a:active{
+            color:yellow;
+        }
+        a:hover{
+            background-color:blueviolet
+        }
+         .xyz h1{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selectors</h1>
+    <div>
+        <p>This is a paragraph.</p>
+    </div>
+       <div id="green">
+            <h3>This is a heading</h3>
+            <p>This is a another patagraph.</p>
+        </div>
+    <div class="blue">
+        <artical><h3> This is a heading</h3></artical>
+        <h3>This is a heading</h3>
+        <p>This is a third paragraph</p>
+    </div>
+    <a href="https://www.swiggy.com" target="_blank">open swiggy</a>
+    <a href="https://www.zomato.com" target ="_blank">open zomato</a> 
+    
+    <div class="abc">
+        <div class="abcd xyz"></div>
+            <h1> This is a heading </h1>
+            <p> This is a paragraph</p>
+        </div>
+        <div class="abcde zyx">
+            <h2> This is another heading</h2>
+            <p> This is another paragraph.</p>
+        </div>
+    </div>
+</body>
+</html>

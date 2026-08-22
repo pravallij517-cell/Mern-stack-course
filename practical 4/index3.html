@@ -1,0 +1,1904 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MovieVerse | Movie Review Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-kxQjG88K4FhD4S5aKjy42Mjs0pHDPBVQbJis8E0XJPN4RjFWpNWi8on5GJq4L6JvagMvb25Gk6PH2HBz4ITc2g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-secondary: #111827;
+      --card: #1e293b;
+      --surface: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #ffffff;
+      --muted: #cbd5e1;
+      --accent: #e50914;
+      --accent-soft: #f43f5e;
+      --shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --radius-sm: 16px;
+      --transition: 0.35s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    html {
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, rgba(229, 9, 20, 0.15), transparent 35%),
+        var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    .button {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      border-radius: 999px;
+      transition: transform var(--transition), box-shadow var(--transition),
+        background var(--transition);
+    }
+
+    button:focus,
+    input:focus,
+    a:focus {
+      outline: 2px solid rgba(229, 9, 20, 0.55);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .brand span {
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      position: relative;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color var(--transition);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    nav a:hover,
+    nav a:focus {
+      color: var(--text);
+    }
+
+    nav a:hover::after,
+    nav a:focus::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      position: relative;
+      padding: 4rem 0 3rem;
+      min-height: 88vh;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.85)),
+        url("images/hero-bg.jpg") center/cover no-repeat;
+      background-blend-mode: overlay;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(229, 9, 20, 0.24), transparent 20%),
+        radial-gradient(circle at bottom right, rgba(244, 63, 94, 0.18), transparent 25%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin: 0 0 1rem;
+    }
+
+    .hero-copy p {
+      max-width: 42rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .button-primary,
+    .button-secondary {
+      padding: 0.95rem 1.7rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      box-shadow: 0 18px 35px rgba(233, 9, 20, 0.18);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color: #fff;
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .button-primary:hover,
+    .button-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 1.25rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(circle, rgba(229, 9, 20, 0.12), transparent 40%);
+      filter: blur(40px);
+      z-index: 0;
+    }
+
+    .hero-poster {
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-poster img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 3/4;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-poster:hover img {
+      transform: scale(1.03);
+    }
+
+    .hero-info {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(15, 23, 42, 0.75);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 2;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-info .rating {
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .hero-info h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: #fff;
+    }
+
+    .hero-info span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 3rem 0 1.4rem;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 2.4vw, 2.6rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 42rem;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .review-card,
+    .trend-card,
+    .genre-card,
+    .critic-card,
+    .latest-card,
+    .reviewer-card,
+    .testimonial-card,
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      transition: transform var(--transition), border-color var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .review-card:hover,
+    .trend-card:hover,
+    .genre-card:hover,
+    .critic-card:hover,
+    .latest-card:hover,
+    .reviewer-card:hover,
+    .testimonial-card:hover,
+    .stat-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(229, 9, 20, 0.22);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .review-card {
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .review-thumb {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .review-thumb img {
+      transition: transform 0.6s ease;
+      object-fit: cover;
+      height: 320px;
+      width: 100%;
+    }
+
+    .review-card:hover .review-thumb img {
+      transform: scale(1.08);
+    }
+
+    .review-card-content {
+      padding: 1.4rem;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      gap: 0.35rem;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .tag i {
+      font-size: 0.85rem;
+    }
+
+    .review-card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .review-card .meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .stars {
+      display: inline-flex;
+      gap: 0.15rem;
+      color: #fbbf24;
+    }
+
+    .review-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .review-card .read-btn {
+      margin-top: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .review-card .read-btn i {
+      transform: translateX(0);
+      transition: transform var(--transition);
+    }
+
+    .review-card:hover .read-btn i {
+      transform: translateX(4px);
+    }
+
+    .trending-wrapper {
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .trend-list {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(220px, 280px);
+      gap: 1rem;
+    }
+
+    .trend-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .trend-card .trend-details {
+      padding: 1rem;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .trend-card .trend-details span {
+      display: inline-flex;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .trend-card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .genre-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .genre-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 140px;
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
+    }
+
+    .genre-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(229, 9, 20, 0.18), transparent 30%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .genre-card:hover::before {
+      opacity: 1;
+    }
+
+    .genre-card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .genre-card p {
+      margin: 0.6rem 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .critic-card {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      align-items: center;
+    }
+
+    .critic-poster {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      align-self: stretch;
+    }
+
+    .critic-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      aspect-ratio: 3/4;
+    }
+
+    .critic-card:hover .critic-poster img {
+      transform: scale(1.05);
+    }
+
+    .critic-content {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .critic-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(229, 9, 20, 0.12);
+      color: var(--accent);
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    .critic-content h3 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+    }
+
+    .critic-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 44rem;
+    }
+
+    .pros-cons {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .pros-cons div {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 1rem;
+    }
+
+    .pros-cons h4 {
+      margin: 0 0 0.75rem;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .pros-cons li {
+      margin-bottom: 0.6rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      list-style: disc inside;
+    }
+
+    .score-card {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(229, 9, 20, 0.14));
+      border: 1px solid rgba(229, 9, 20, 0.22);
+    }
+
+    .score-card span {
+      font-size: 1.85rem;
+      font-weight: 800;
+    }
+
+    .latest-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .latest-card {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .latest-card img {
+      height: 240px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform 0.5s ease;
+    }
+
+    .latest-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .latest-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .latest-card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .latest-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .latest-card .btn-small {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 0.75rem;
+    }
+
+    .reviewer-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .reviewer-card {
+      display: grid;
+      gap: 1.1rem;
+      padding: 1.4rem;
+      text-align: center;
+      align-items: center;
+    }
+
+    .reviewer-avatar {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(229, 9, 20, 0.2);
+    }
+
+    .reviewer-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .reviewer-card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .reviewer-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .stat-card {
+      display: grid;
+      gap: 0.8rem;
+      padding: 1.6rem;
+      text-align: center;
+      border-radius: 24px;
+    }
+
+    .stat-card h3 {
+      margin: 0;
+      font-size: 2.4rem;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .testimonial-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .testimonial-card {
+      display: grid;
+      gap: 1rem;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: "“";
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 4rem;
+      color: rgba(229, 9, 20, 0.15);
+      z-index: 0;
+    }
+
+    .testimonial-card-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .testimonial-card .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .testimonial-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-card h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .testimonial-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.97rem;
+    }
+
+    .newsletter {
+      padding: 3rem 2rem;
+      margin: 3rem 0;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(229, 9, 20, 0.22), rgba(244, 63, 94, 0.14));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.18);
+    }
+
+    .newsletter-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .newsletter h2 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2rem, 3vw, 2.7rem);
+    }
+
+    .newsletter p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 30rem;
+    }
+
+    .newsletter-form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .newsletter-form label {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+
+    .newsletter-form input {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .newsletter-form input::placeholder {
+      color: rgba(203, 213, 225, 0.7);
+    }
+
+    .newsletter-form button {
+      width: fit-content;
+      padding: 1rem 1.8rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      align-self: start;
+    }
+
+    .faq {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform var(--transition);
+    }
+
+    .faq-item:hover {
+      transform: translateY(-6px);
+    }
+
+    .faq-item input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .faq-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      color: #fff;
+      position: relative;
+    }
+
+    .faq-label::after {
+      content: "\f107";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      transition: transform var(--transition);
+      color: var(--accent);
+    }
+
+    .faq-item input:checked + .faq-label::after {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1.5rem;
+      color: var(--muted);
+      transition: max-height 0.45s ease, padding 0.45s ease;
+    }
+
+    .faq-item input:checked ~ .faq-answer {
+      max-height: 40rem;
+      padding: 0 1.5rem 1.25rem;
+    }
+
+    .faq-answer p {
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    footer {
+      padding: 3rem 0 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-grid h3 {
+      margin: 0 0 1rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-text {
+      color: var(--muted);
+      max-width: 28rem;
+    }
+
+    .footer-links,
+    .footer-genres,
+    .footer-social {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .footer-links a,
+    .footer-genres a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover,
+    .footer-genres a:hover {
+      color: var(--text);
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .social-icons a {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .social-icons a:hover {
+      background: rgba(229, 9, 20, 0.18);
+      transform: translateY(-2px);
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .back-top {
+      color: var(--accent);
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .hero-card,
+    .review-card,
+    .critic-card,
+    .latest-card,
+    .reviewer-card,
+    .testimonial-card,
+    .stat-card {
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .hero-card {
+      animation-duration: 14s;
+    }
+
+    .review-card {
+      animation-duration: 11s;
+    }
+
+    .stat-card {
+      animation-duration: 12s;
+    }
+
+    .pulse {
+      position: relative;
+    }
+
+    .pulse::after {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: inherit;
+      background: rgba(229, 9, 20, 0.12);
+      filter: blur(16px);
+      opacity: 0.8;
+      animation: pulse 2.8s infinite;
+      z-index: -1;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.98);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.05);
+        opacity: 0.2;
+      }
+      100% {
+        transform: scale(0.98);
+        opacity: 0.8;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .hero-grid,
+      .critic-card,
+      .newsletter-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .critic-card {
+        padding: 1.25rem;
+      }
+
+      .latest-grid,
+      .reviewer-grid,
+      .stats-grid,
+      .testimonial-grid,
+      .genre-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .trend-list {
+        grid-auto-columns: minmax(240px, 280px);
+      }
+    }
+
+    @media (max-width: 860px) {
+      nav {
+        gap: 1rem;
+      }
+
+      .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.8rem, 6vw, 4rem);
+      }
+
+      .review-card .review-thumb img {
+        height: 280px;
+      }
+
+      .latest-card img {
+        height: 220px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        gap: 1.5rem;
+      }
+
+      .hero-copy p {
+        max-width: 100%;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-card {
+        padding: 1rem;
+      }
+
+      .review-card .review-thumb img {
+        height: 260px;
+      }
+
+      .trend-list {
+        grid-auto-columns: minmax(220px, 100%);
+      }
+
+      .genre-grid,
+      .latest-grid,
+      .reviewer-grid,
+      .stats-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-inner,
+      .critic-card {
+        gap: 1.25rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand {
+        font-size: 0.95rem;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.7rem;
+      }
+
+      .hero-info {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-form input,
+      .newsletter-form button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#home" class="brand">
+        <i class="fa-solid fa-film"></i>
+        <span>MovieVerse</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#top-rated">Top Rated</a>
+        <a href="#genres">Genres</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="tag">Premium Movie Reviews</p>
+          <h1>Discover Honest Movie Reviews</h1>
+          <p>
+            MovieVerse brings you cinematic critiques, top picks, and expert insights for every genre. Explore curated reviews, trending titles, and influential critics in a polished dark interface.
+          </p>
+          <div class="hero-buttons">
+            <a href="#reviews" class="button button-primary">Explore Reviews</a>
+            <a href="#top-rated" class="button button-secondary">Top Rated Movies</a>
+          </div>
+        </div>
+        <div class="hero-card pulse">
+          <div class="hero-poster">
+            <img src="images/movie1.jpg" alt="Featured movie poster" />
+          </div>
+          <div class="hero-info">
+            <div>
+              <p class="rating">9.4 IMDb</p>
+              <h3>Crimson Horizon</h3>
+            </div>
+            <span>Action • Sci-Fi • 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="reviews">
+      <div class="section-title">
+        <div>
+          <h2>Featured Reviews</h2>
+          <p>Premium review cards for the latest cinematic releases with ratings, genre tags, and short takeaways.</p>
+        </div>
+      </div>
+
+      <div class="card-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
+        <article class="review-card">
+          <div class="review-thumb">
+            <img src="images/movie2.jpg" alt="Movie poster for Neon Echo" />
+          </div>
+          <div class="review-card-content">
+            <span class="tag"><i class="fa-solid fa-tag"></i> Thriller</span>
+            <h3>Neon Echo</h3>
+            <div class="meta">
+              <span>2026</span>
+              <span>IMDb 8.7</span>
+            </div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p>A stylish, pulse-pounding thriller that delivers character depth and cinematic tension from start to finish.</p>
+            <a href="#" class="read-btn">Read Review <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-thumb">
+            <img src="images/movie3.jpg" alt="Movie poster for Lunar Odyssey" />
+          </div>
+          <div class="review-card-content">
+            <span class="tag"><i class="fa-solid fa-tag"></i> Sci-Fi</span>
+            <h3>Lunar Odyssey</h3>
+            <div class="meta">
+              <span>2026</span>
+              <span>IMDb 9.1</span>
+            </div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>An immersive space epic with breathtaking visuals and surprising emotional resonance.</p>
+            <a href="#" class="read-btn">Read Review <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-thumb">
+            <img src="images/movie4.jpg" alt="Movie poster for Midnight Skyline" />
+          </div>
+          <div class="review-card-content">
+            <span class="tag"><i class="fa-solid fa-tag"></i> Drama</span>
+            <h3>Midnight Skyline</h3>
+            <div class="meta">
+              <span>2026</span>
+              <span>IMDb 8.9</span>
+            </div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p>A compelling narrative with a cast of unforgettable characters and stunning cityscape cinematography.</p>
+            <a href="#" class="read-btn">Read Review <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-thumb">
+            <img src="images/movie5.jpg" alt="Movie poster for Echoes of Dawn" />
+          </div>
+          <div class="review-card-content">
+            <span class="tag"><i class="fa-solid fa-tag"></i> Adventure</span>
+            <h3>Echoes of Dawn</h3>
+            <div class="meta">
+              <span>2025</span>
+              <span>IMDb 8.3</span>
+            </div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+            </div>
+            <p>A heartfelt adventure film full of dazzling locations, humor, and a strong emotional journey.</p>
+            <a href="#" class="read-btn">Read Review <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-thumb">
+            <img src="images/movie6.jpg" alt="Movie poster for Phantom Rhapsody" />
+          </div>
+          <div class="review-card-content">
+            <span class="tag"><i class="fa-solid fa-tag"></i> Fantasy</span>
+            <h3>Phantom Rhapsody</h3>
+            <div class="meta">
+              <span>2026</span>
+              <span>IMDb 9.0</span>
+            </div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Magic, mystery, and a lush visual palette come together for one of the year's most enchanting films.</p>
+            <a href="#" class="read-btn">Read Review <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-thumb">
+            <img src="images/movie7.jpg" alt="Movie poster for Broken Stars" />
+          </div>
+          <div class="review-card-content">
+            <span class="tag"><i class="fa-solid fa-tag"></i> Romance</span>
+            <h3>Broken Stars</h3>
+            <div class="meta">
+              <span>2025</span>
+              <span>IMDb 8.5</span>
+            </div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+            </div>
+            <p>An intimate romance with beautiful performances and a soundtrack that stays with you long after.</p>
+            <a href="#" class="read-btn">Read Review <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="top-rated">
+      <div class="section-title">
+        <div>
+          <h2>Trending Movies</h2>
+          <p>Swipe through the hottest releases and top rated picks from critics and audiences alike.</p>
+        </div>
+      </div>
+
+      <div class="trending-wrapper">
+        <div class="trend-list">
+          <article class="trend-card">
+            <img src="images/movie8.jpg" alt="Movie poster for Crimson Skyline" />
+            <div class="trend-details">
+              <span>Action • 2026</span>
+              <h3>Crimson Skyline</h3>
+              <span>IMDb 9.2 • Top 5</span>
+            </div>
+          </article>
+
+          <article class="trend-card">
+            <img src="images/movie9.jpg" alt="Movie poster for Solaris Rift" />
+            <div class="trend-details">
+              <span>Sci-Fi • 2026</span>
+              <h3>Solaris Rift</h3>
+              <span>IMDb 8.8 • Futuristic</span>
+            </div>
+          </article>
+
+          <article class="trend-card">
+            <img src="images/movie10.jpg" alt="Movie poster for The Last Score" />
+            <div class="trend-details">
+              <span>Crime • 2025</span>
+              <h3>The Last Score</h3>
+              <span>IMDb 8.6 • Suspense</span>
+            </div>
+          </article>
+
+          <article class="trend-card">
+            <img src="images/movie11.jpg" alt="Movie poster for Nova Lane" />
+            <div class="trend-details">
+              <span>Adventure • 2026</span>
+              <h3>Nova Lane</h3>
+              <span>IMDb 8.9 • Epic</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="genres">
+      <div class="section-title">
+        <div>
+          <h2>Top Genres</h2>
+          <p>Explore curated categories for every mood, from high-octane action to heartfelt drama.</p>
+        </div>
+      </div>
+      <div class="genre-grid" style="gap: 1.5rem;">
+        <article class="genre-card">
+          <h3>Action</h3>
+          <p>Adrenaline-driven spectacle and explosive moments.</p>
+        </article>
+        <article class="genre-card">
+          <h3>Adventure</h3>
+          <p>Epic journeys, breathtaking worlds, and unforgettable quests.</p>
+        </article>
+        <article class="genre-card">
+          <h3>Comedy</h3>
+          <p>Witty humor, strong chemistry, and feel-good energy.</p>
+        </article>
+        <article class="genre-card">
+          <h3>Drama</h3>
+          <p>Emotional storytelling with rich characters and tension.</p>
+        </article>
+        <article class="genre-card">
+          <h3>Thriller</h3>
+          <p>Dark surprises, suspenseful pacing, and gripping plots.</p>
+        </article>
+        <article class="genre-card">
+          <h3>Sci-Fi</h3>
+          <p>Futuristic worlds, mind-bending concepts, and immersive visuals.</p>
+        </article>
+        <article class="genre-card">
+          <h3>Animation</h3>
+          <p>Colorful worlds, heartwarming stories, and visual innovation.</p>
+        </article>
+        <article class="genre-card">
+          <h3>Fantasy</h3>
+          <p>Magic, myth, and captivating imaginative realms.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="about">
+      <div class="section-title">
+        <div>
+          <h2>Critics' Choice</h2>
+          <p>A detailed featured review from our editorial team highlighting standout sets, performances, and story arcs.</p>
+        </div>
+      </div>
+      <article class="critic-card">
+        <div class="critic-poster">
+          <img src="images/movie12.jpg" alt="Movie poster for Velvet Eclipse" />
+        </div>
+        <div class="critic-content">
+          <span class="critic-badge"><i class="fa-solid fa-award"></i> Critics' Pick</span>
+          <h3>Velvet Eclipse: A cinematic masterclass in mood and mystery</h3>
+          <p>
+            Velvet Eclipse blends hypnotic visuals with a subtle narrative that keeps viewers invested from opening frame to final reveal. The director's vision, paired with an outstanding cast, delivers a smart thriller with emotional depth and rare stylistic elegance.
+          </p>
+          <div class="pros-cons">
+            <div>
+              <h4>Pros</h4>
+              <ul>
+                <li>Immersive atmosphere and visual storytelling</li>
+                <li>Strong central performances</li>
+                <li>Thoughtful pacing and tension</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Cons</h4>
+              <ul>
+                <li>Slow burn may challenge casual viewers</li>
+                <li>Some plot threads remain intentionally ambiguous</li>
+                <li>Not ideal for audiences seeking action-packed thrills</li>
+              </ul>
+            </div>
+          </div>
+          <div class="score-card">
+            <span>9.5</span>
+            <div>
+              <p>Overall Rating</p>
+              <strong>Masterpiece</strong>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="container" id="latest">
+      <div class="section-title">
+        <div>
+          <h2>Latest Reviews</h2>
+          <p>Fresh reviews from the newest releases, updated daily with crisp summaries and strong editorial insight.</p>
+        </div>
+      </div>
+      <div class="latest-grid" style="gap: 1.5rem;">
+        <article class="latest-card">
+          <img src="images/movie13.jpg" alt="Movie poster for Twilight Chamber" />
+          <div class="latest-meta">
+            <span>Horror</span>
+            <span>IMDb 8.4</span>
+          </div>
+          <h3>Twilight Chamber</h3>
+          <p>A chilling gothic thriller with strong visual mood and a haunting score.</p>
+          <a href="#" class="btn-small">View Review <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+
+        <article class="latest-card">
+          <img src="images/movie14.jpg" alt="Movie poster for Golden Verge" />
+          <div class="latest-meta">
+            <span>Drama</span>
+            <span>IMDb 8.7</span>
+          </div>
+          <h3>Golden Verge</h3>
+          <p>A subtle character study with excellent performances and stunning cinematography.</p>
+          <a href="#" class="btn-small">View Review <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+
+        <article class="latest-card">
+          <img src="images/movie15.jpg" alt="Movie poster for Pulse Runner" />
+          <div class="latest-meta">
+            <span>Action</span>
+            <span>IMDb 8.2</span>
+          </div>
+          <h3>Pulse Runner</h3>
+          <p>A high-speed action spectacle with tight choreography and strong pacing.</p>
+          <a href="#" class="btn-small">View Review <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+
+        <article class="latest-card">
+          <img src="images/movie16.jpg" alt="Movie poster for Aurora Road" />
+          <div class="latest-meta">
+            <span>Adventure</span>
+            <span>IMDb 8.5</span>
+          </div>
+          <h3>Aurora Road</h3>
+          <p>An emotional road epic with breathtaking landscapes and engaging character arcs.</p>
+          <a href="#" class="btn-small">View Review <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+
+        <article class="latest-card">
+          <img src="images/movie17.jpg" alt="Movie poster for Stardust Harbor" />
+          <div class="latest-meta">
+            <span>Fantasy</span>
+            <span>IMDb 8.6</span>
+          </div>
+          <h3>Stardust Harbor</h3>
+          <p>A magical story full of wonder, heart, and visual imagination.</p>
+          <a href="#" class="btn-small">View Review <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+
+        <article class="latest-card">
+          <img src="images/movie18.jpg" alt="Movie poster for Afterglow" />
+          <div class="latest-meta">
+            <span>Romance</span>
+            <span>IMDb 8.3</span>
+          </div>
+          <h3>Afterglow</h3>
+          <p>An intimate romance with warm performances and beautifully directed scenes.</p>
+          <a href="#" class="btn-small">View Review <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+
+        <article class="latest-card">
+          <img src="images/movie19.jpg" alt="Movie poster for Steel Horizon" />
+          <div class="latest-meta">
+            <span>Action</span>
+            <span>IMDb 8.9</span>
+          </div>
+          <h3>Steel Horizon</h3>
+          <p>Pulse-pounding and large-scale with thrilling combat and explosive sequences.</p>
+          <a href="#" class="btn-small">View Review <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+
+        <article class="latest-card">
+          <img src="images/movie20.jpg" alt="Movie poster for Velvet Dawn" />
+          <div class="latest-meta">
+            <span>Drama</span>
+            <span>IMDb 8.1</span>
+          </div>
+          <h3>Velvet Dawn</h3>
+          <p>An evocative drama exploring relationships through rich dialogue and stunning visuals.</p>
+          <a href="#" class="btn-small">View Review <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="reviewers">
+      <div class="section-title">
+        <div>
+          <h2>Top Reviewers</h2>
+          <p>Discover the critics behind the ratings, with honest opinions and genre expertise.</p>
+        </div>
+      </div>
+
+      <div class="reviewer-grid" style="gap: 1.5rem;">
+        <article class="reviewer-card">
+          <div class="reviewer-avatar">
+            <img src="images/reviewer1.jpg" alt="Reviewer profile for Maya Jensen" />
+          </div>
+          <h3>Maya Jensen</h3>
+          <p>146 Reviews</p>
+          <p>Favorite Genre: Thriller</p>
+          <span class="badge">4.9★ Critic</span>
+        </article>
+
+        <article class="reviewer-card">
+          <div class="reviewer-avatar">
+            <img src="images/reviewer2.jpg" alt="Reviewer profile for Kian Brooks" />
+          </div>
+          <h3>Kian Brooks</h3>
+          <p>132 Reviews</p>
+          <p>Favorite Genre: Sci-Fi</p>
+          <span class="badge">4.8★ Critic</span>
+        </article>
+
+        <article class="reviewer-card">
+          <div class="reviewer-avatar">
+            <img src="images/reviewer3.jpg" alt="Reviewer profile for Elena Frost" />
+          </div>
+          <h3>Elena Frost</h3>
+          <p>120 Reviews</p>
+          <p>Favorite Genre: Drama</p>
+          <span class="badge">4.9★ Critic</span>
+        </article>
+
+        <article class="reviewer-card">
+          <div class="reviewer-avatar">
+            <img src="images/reviewer4.jpg" alt="Reviewer profile for Noah Vale" />
+          </div>
+          <h3>Noah Vale</h3>
+          <p>108 Reviews</p>
+          <p>Favorite Genre: Adventure</p>
+          <span class="badge">4.7★ Critic</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="stats">
+      <div class="section-title">
+        <div>
+          <h2>Movie Statistics</h2>
+          <p>Impactful platform metrics showcasing coverage, influence, and high audience satisfaction.</p>
+        </div>
+      </div>
+
+      <div class="stats-grid" style="gap: 1.5rem;">
+        <article class="stat-card pulse">
+          <h3>150+</h3>
+          <p>Movies Reviewed</p>
+        </article>
+        <article class="stat-card pulse">
+          <h3>50+</h3>
+          <p>Top Critics</p>
+        </article>
+        <article class="stat-card pulse">
+          <h3>100K+</h3>
+          <p>Visitors Monthly</p>
+        </article>
+        <article class="stat-card pulse">
+          <h3>4.9★</h3>
+          <p>Average Rating</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="testimonials">
+      <div class="section-title">
+        <div>
+          <h2>Testimonials</h2>
+          <p>Audience feedback from cinema lovers who trust MovieVerse for thoughtful movie insight.</p>
+        </div>
+      </div>
+
+      <div class="testimonial-grid" style="gap: 1.5rem;">
+        <article class="testimonial-card">
+          <div class="testimonial-card-content">
+            <div class="reviewer">
+              <div class="testimonial-avatar">
+                <img src="images/testimonial1.jpg" alt="Testimonial from Ava" />
+              </div>
+              <div>
+                <h4>Ava Parker</h4>
+                <span class="badge">Verified Reader</span>
+              </div>
+            </div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p>MovieVerse helps me choose the best films for movie night. The reviews are honest and beautifully presented.</p>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-card-content">
+            <div class="reviewer">
+              <div class="testimonial-avatar">
+                <img src="images/testimonial2.jpg" alt="Testimonial from Liam" />
+              </div>
+              <div>
+                <h4>Liam Carter</h4>
+                <span class="badge">Film Student</span>
+              </div>
+            </div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+            </div>
+            <p>The site feels premium and easy to navigate. I love the critic picks and genre recommendations.</p>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-card-content">
+            <div class="reviewer">
+              <div class="testimonial-avatar">
+                <img src="images/testimonial3.jpg" alt="Testimonial from Sophia" />
+              </div>
+              <div>
+                <h4>Sophia Lin</h4>
+                <span class="badge">Cinephile</span>
+              </div>
+            </div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p>Every review feels carefully curated. The design is sleek and helps me pinpoint the best movies instantly.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="newsletter">
+      <div class="newsletter">
+        <div class="newsletter-inner">
+          <div>
+            <h2>Stay Updated with MovieVerse</h2>
+            <p>Subscribe to our newsletter for weekly review highlights, top picks, and exclusive editorial insights.</p>
+          </div>
+          <form class="newsletter-form">
+            <label>
+              <input type="email" placeholder="Enter your email address" aria-label="Email address" />
+            </label>
+            <button type="submit">Subscribe Now</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <div class="section-title">
+        <div>
+          <h2>Frequently Asked Questions</h2>
+          <p>Find quick answers to the most common questions about MovieVerse and our review process.</p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <article class="faq-item">
+          <input type="checkbox" id="faq1" />
+          <label class="faq-label" for="faq1">How often are new reviews published?</label>
+          <div class="faq-answer">
+            <p>New reviews are published several times a week, with fresh content added for new releases, critic picks, and trending movies.</p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <input type="checkbox" id="faq2" />
+          <label class="faq-label" for="faq2">Can I trust the ratings on MovieVerse?</label>
+          <div class="faq-answer">
+            <p>Ratings are based on expert review scores, audience sentiment, and editorial analysis to deliver a balanced perspective.</p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <input type="checkbox" id="faq3" />
+          <label class="faq-label" for="faq3">Do you cover independent films?</label>
+          <div class="faq-answer">
+            <p>Yes, MovieVerse features indie films, festival favorites, and mainstream blockbusters to deliver a diverse set of reviews.</p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <input type="checkbox" id="faq4" />
+          <label class="faq-label" for="faq4">How can I submit a movie suggestion?</label>
+          <div class="faq-answer">
+            <p>Use the contact section below or email our editorial team with your recommendation; we review audience suggestions regularly.</p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <input type="checkbox" id="faq5" />
+          <label class="faq-label" for="faq5">Is there a way to follow top critics?</label>
+          <div class="faq-answer">
+            <p>Yes, each critic profile includes their review count and favorite genres, making it easy to follow their taste and latest coverage.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#home" class="brand">
+          <i class="fa-solid fa-film"></i>
+          <span>MovieVerse</span>
+        </a>
+        <p class="footer-text">
+          Premium movie review platform with curated recommendations, critic insights, and elegant design for the modern cinephile.
+        </p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#top-rated">Top Rated</a>
+          <a href="#genres">Genres</a>
+        </div>
+      </div>
+      <div>
+        <h3>Genres</h3>
+        <div class="footer-genres">
+          <a href="#">Action</a>
+          <a href="#">Drama</a>
+          <a href="#">Sci-Fi</a>
+          <a href="#">Fantasy</a>
+        </div>
+      </div>
+      <div>
+        <h3>Social</h3>
+        <div class="social-icons">
+          <a href="#" aria-label="Follow on Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="Follow on Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Follow on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Follow on YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <p>© 2026 MovieVerse. All Rights Reserved.</p>
+      <a href="#home" class="back-top">Back to Top</a>
+    </div>
+  </footer>
+</body>
+</html>
+```

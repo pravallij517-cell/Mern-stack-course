@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task</title>
+    <style>
+        .body{
+            background-color:plum;
+            width:100vw;
+            height:100vh;
+            display:flex;
+            justify-content:right;
+            align-items:top;
+            position:fixed;
+            top: 10px;
+            right: 20px;
+        }
+        .item1{
+            height: 92px;
+            width: 92px;
+            background-color:black;
+            border:2px solid black;
+            margin:4px;
+            border-radius: 50%;
+        }
+        .item{
+            height: 92px;
+            width: 92px;
+            background-color:rgb(163, 163, 250);
+            border:2px solid black;
+            margin:4px;
+            border-radius: 50%;
+
+        }
+        .box{
+            background-color: rgd(163,163,250);
+            width:100px;
+            height:100px;
+            border-radius:50%;
+        }
+        .item{
+            animation: myanimation 2s ease-in-out 1s infinite alternate-reverse;
+        }
+        @keyframes myanimation{
+            from{
+                 background-color: purple;
+            }
+            to{
+                transform:translateY(80vh);
+                background-color: paleturquoise;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="body">
+        <div class="box"></div>
+        <div class="item item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item1"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CineScope is a premium movie review website with featured films, top-rated picks, critiques, and news."
+    />
+    <title>CineScope | Movie Review Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrapper">
+        <a class="brand" href="#home" aria-label="CineScope home">
+          <span class="brand-logo">🎬</span>
+          <span class="brand-text">CineScope</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a class="active" href="#home">Home</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#genres">Genres</a>
+          <a href="#top-rated">Top Rated</a>
+          <a href="#latest">Latest</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-content">
+          <p class="eyebrow">Curated cinema, one review at a time</p>
+          <h1>Discover stories worth staying up for.</h1>
+          <p class="hero-subtitle">
+            Explore bold reviews, standout performances, and the films shaping
+            tonight's watchlist.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#reviews">Explore Reviews</a>
+            <a class="btn btn-secondary" href="#top-rated">Top Movies</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="reviews">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Featured Films</p>
+            <h2>Must-Watch Reviews</h2>
+          </div>
+
+          <div class="card-grid movie-grid">
+            <article class="movie-card">
+              <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=900&q=80" alt="Poster for The Silent City" />
+              <div class="card-body">
+                <div class="meta-row">
+                  <span class="genre-pill">Thriller</span>
+                  <span class="rating">★ 8.9</span>
+                </div>
+                <h3>The Silent City</h3>
+                <p class="movie-meta">2025 • 2h 08m</p>
+                <p>
+                  A tense noir mystery with lyrical tension and unforgettable
+                  final-act twists.
+                </p>
+                <a class="btn btn-link" href="#latest">Read More</a>
+              </div>
+            </article>
+
+            <article class="movie-card">
+              <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80" alt="Poster for Night Signal" />
+              <div class="card-body">
+                <div class="meta-row">
+                  <span class="genre-pill">Sci-Fi</span>
+                  <span class="rating">★ 9.1</span>
+                </div>
+                <h3>Night Signal</h3>
+                <p class="movie-meta">2024 • 2h 15m</p>
+                <p>
+                  A dazzling, cerebral sci-fi epic that balances wonder and
+                  emotional depth.
+                </p>
+                <a class="btn btn-link" href="#latest">Read More</a>
+              </div>
+            </article>
+
+            <article class="movie-card">
+              <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=900&q=80" alt="Poster for Velvet Echo" />
+              <div class="card-body">
+                <div class="meta-row">
+                  <span class="genre-pill">Drama</span>
+                  <span class="rating">★ 8.6</span>
+                </div>
+                <h3>Velvet Echo</h3>
+                <p class="movie-meta">2023 • 1h 54m</p>
+                <p>
+                  An intimate drama elevated by impeccable performances and a
+                  rich emotional palette.
+                </p>
+                <a class="btn btn-link" href="#latest">Read More</a>
+              </div>
+            </article>
+
+            <article class="movie-card">
+              <img src="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?auto=format&fit=crop&w=900&q=80" alt="Poster for The Last Orbit" />
+              <div class="card-body">
+                <div class="meta-row">
+                  <span class="genre-pill">Action</span>
+                  <span class="rating">★ 8.8</span>
+                </div>
+                <h3>The Last Orbit</h3>
+                <p class="movie-meta">2025 • 2h 03m</p>
+                <p>
+                  Fast, stylish, and emotionally grounded, this blockbuster
+                  leaves a strong cinematic impact.
+                </p>
+                <a class="btn btn-link" href="#latest">Read More</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="genres">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Popular Genres</p>
+            <h2>Find Your Mood</h2>
+          </div>
+
+          <div class="card-grid genre-grid">
+            <article class="genre-card"><span>🔥</span><h3>Action</h3></article>
+            <article class="genre-card"><span>🕵️</span><h3>Thriller</h3></article>
+            <article class="genre-card"><span>🚀</span><h3>Sci-Fi</h3></article>
+            <article class="genre-card"><span>👻</span><h3>Horror</h3></article>
+            <article class="genre-card"><span>😂</span><h3>Comedy</h3></article>
+            <article class="genre-card"><span>🎭</span><h3>Drama</h3></article>
+            <article class="genre-card"><span>💖</span><h3>Romance</h3></article>
+            <article class="genre-card"><span>✨</span><h3>Animation</h3></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-accent" id="top-rated">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Top Rated Movies</p>
+            <h2>Critics' Favorites</h2>
+          </div>
+
+          <div class="ranked-list">
+            <article class="rank-card">
+              <div class="rank-poster">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Poster for Orbit of Dawn" />
+              </div>
+              <div class="rank-content">
+                <span class="rank-number">01</span>
+                <span class="rating">★ 9.7</span>
+                <h3>Orbit of Dawn</h3>
+                <p>
+                  A luminous space odyssey with grand scale, emotional precision,
+                  and unforgettable visual storytelling.
+                </p>
+              </div>
+            </article>
+
+            <article class="rank-card">
+              <div class="rank-poster">
+                <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=800&q=80" alt="Poster for Paper & Ash" />
+              </div>
+              <div class="rank-content">
+                <span class="rank-number">02</span>
+                <span class="rating">★ 9.4</span>
+                <h3>Paper & Ash</h3>
+                <p>
+                  Beautifully written and sharply observed, this drama brings
+                  fragile human moments to life.
+                </p>
+              </div>
+            </article>
+
+            <article class="rank-card">
+              <div class="rank-poster">
+                <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=800&q=80" alt="Poster for Red Moth" />
+              </div>
+              <div class="rank-content">
+                <span class="rank-number">03</span>
+                <span class="rating">★ 9.2</span>
+                <h3>Red Moth</h3>
+                <p>
+                  Stylishly inventive and emotionally rich, delivering an
+                  exhilarating and deeply satisfying ride.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="latest">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Latest Reviews</p>
+            <h2>Fresh Critic Picks</h2>
+          </div>
+
+          <div class="card-grid review-grid">
+            <article class="review-card glass-card">
+              <div class="review-header">
+                <div class="avatar">AR</div>
+                <div>
+                  <h3>Ariana Ruiz</h3>
+                  <p>June 14, 2026</p>
+                </div>
+              </div>
+              <p class="movie-title">The Last Skyline</p>
+              <p class="stars">★★★★★</p>
+              <p>
+                A breathtaking blend of spectacle and sincerity; the score alone
+                makes it a must-see.
+              </p>
+            </article>
+
+            <article class="review-card glass-card">
+              <div class="review-header">
+                <div class="avatar">NK</div>
+                <div>
+                  <h3>Noah Kim</h3>
+                  <p>June 11, 2026</p>
+                </div>
+              </div>
+              <p class="movie-title">Midnight Railway</p>
+              <p class="stars">★★★★☆</p>
+              <p>
+                Sharp suspense, elegant camera work, and a haunting atmosphere
+                that lingers long after the credits roll.
+              </p>
+            </article>
+
+            <article class="review-card glass-card">
+              <div class="review-header">
+                <div class="avatar">LM</div>
+                <div>
+                  <h3>Lila Moore</h3>
+                  <p>June 09, 2026</p>
+                </div>
+              </div>
+              <p class="movie-title">Aurora Garden</p>
+              <p class="stars">★★★★★</p>
+              <p>
+                Warm, immersive, and beautifully directed, this film turns a
+                simple story into something unforgettable.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section statistics-section">
+        <div class="container">
+          <div class="card-grid stats-grid">
+            <article class="stat-card">
+              <h3>1,250+</h3>
+              <p>Movies Reviewed</p>
+            </article>
+            <article class="stat-card">
+              <h3>48K</h3>
+              <p>Registered Members</p>
+            </article>
+            <article class="stat-card">
+              <h3>92K</h3>
+              <p>Weekly Visitors</p>
+            </article>
+            <article class="stat-card">
+              <h3>120</h3>
+              <p>Top Rated Movies</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section testimonials-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Testimonials</p>
+            <h2>What Readers Say</h2>
+          </div>
+
+          <div class="card-grid testimonial-grid">
+            <article class="testimonial-card">
+              <div class="testimonial-user">
+                <span class="avatar">SJ</span>
+                <div>
+                  <h3>Sophia James</h3>
+                  <p>Film Student</p>
+                </div>
+              </div>
+              <p>
+                “The reviews feel premium, thoughtful, and genuinely helpful for
+                planning my next watch.”
+              </p>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-user">
+                <span class="avatar">MR</span>
+                <div>
+                  <h3>Marcus Reed</h3>
+                  <p>Critic</p>
+                </div>
+              </div>
+              <p>
+                “This has the polish of a streaming platform with the clarity of
+                a trusted review journal.”
+              </p>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-user">
+                <span class="avatar">EE</span>
+                <div>
+                  <h3>Ella Evans</h3>
+                  <p>Movie Enthusiast</p>
+                </div>
+              </div>
+              <p>
+                “Sharp visual design, beautiful spacing, and a great selection of
+                curated recommendations.”
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section newsletter-section">
+        <div class="container newsletter-box">
+          <div>
+            <p class="eyebrow">Weekly Spotlight</p>
+            <h2>Join the CineScope List</h2>
+            <p>
+              Get handpicked reviews, fresh releases, and curated movie picks in
+              your inbox.
+            </p>
+          </div>
+          <form class="newsletter-form">
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" type="email" placeholder="Enter your email" />
+            <button class="btn btn-primary" type="button">Subscribe</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about">
+        <div class="container about-grid">
+          <div>
+            <p class="eyebrow">About Us</p>
+            <h2>Reviewing cinema with clarity and passion.</h2>
+          </div>
+          <div>
+            <p>
+              CineScope is a premium movie review destination built for cinema
+              lovers who want more than a star rating. We blend sharp criticism,
+              audience-friendly summaries, and elegant presentation into a
+              polished reading experience.
+            </p>
+            <p>
+              Our mission is to help readers discover films that matter, while
+              giving every review a voice that feels cinematic, trustworthy, and
+              inspiring.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <div class="container contact-grid">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2>Tell us what you’re watching.</h2>
+            <p>
+              Have a film recommendation, a question, or a review idea? Reach out
+              and connect with our editorial team.
+            </p>
+          </div>
+
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="Your name" />
+            </div>
+            <div class="form-group">
+              <label for="email-contact">Email</label>
+              <input id="email-contact" type="email" placeholder="name@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input id="subject" type="text" placeholder="Review request" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" rows="5" placeholder="Write your message"></textarea>
+            </div>
+            <button class="btn btn-primary" type="button">Submit</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="#home">
+            <span class="brand-logo">🎬</span>
+            <span class="brand-text">CineScope</span>
+          </a>
+          <p>Elegant reviews for your next unforgettable watch.</p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#genres">Genres</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Top Categories</h3>
+          <ul>
+            <li>Action</li>
+            <li>Thriller</li>
+            <li>Sci-Fi</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li>hello@cinescope.com</li>
+            <li>+1 (555) 320-5010</li>
+            <li>Instagram • X • YouTube</li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>© 2026 CineScope. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

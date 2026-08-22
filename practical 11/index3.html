@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>multicolor website</title>
+    <style>
+        body{
+            background-color: red;
+        }
+        @media screen and (orientation: portrait){
+            body{
+                border: 2px solid rgb(240, 237, 240);
+            }
+        }
+        @media only screen and (max-width: 455px){
+            body{
+                background-color: blue;
+                color: white;
+            }
+        }
+        :root{
+            --colour: yellow;
+            --defop:0.4;
+            --defpad:23px;
+            --secolour: purple;
+        }
+        *{
+            margin:0;
+            padding:0;
+        }
+        .nav{
+            background-color: var(--colour);
+        }
+        ul{
+            display:flex;
+        }
+        ul li{
+            list-style:none;
+            opacity: var(--defop);
+            padding: var(--defpad);
+            border: 2px solid rgb(10, 12, 12);
+        }
+        ul li:first-child{
+            background-color: var(--secolour);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li>home</li>
+            <li>about</li>
+            <li>contact</li>
+        </ul>
+    </div>
+</body>
+</html>

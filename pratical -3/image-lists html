@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device" -width,initial-scal>
+    <title>Lists-Image-Tables</title>
+    <link rel="Stylesheet" href="style.css">
+</head>
+
+<body>
+    <img src="" alt="" height="" width="">
+    <img src="" alt="butterfly" height="100" width="50">
+
+</html>
+
+
+<h1> HTML Definition list</h1>
+<dl>
+    <dt>HTML</dt>
+    <dd>Hyper Text Markup </dd>
+    <dt>CSS</dt>
+    <dd>castcading style system</dd>
+    <dt>JS</dt>
+    <dd>JavaScript</dd>
+</dl>
+<ul type="square">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JAVA SCRIPT</li>
+</ul>
+<ol Type="1">
+    <li><img src="https://thumbs.dreamstime.com/b/famous-sunset-sainte-luce-ste-sea-small-village-along-saint-laurent-river-its-beautiful-sunsets-285868002.jpg"
+            alt="sun image" height="100" wight="100"></li>
+    <li><img src="https://thumbs.dreamstime.com/b/famous-sunset-sainte-luce-ste-sea-small-village-along-saint-laurent-river-its-beautiful-sunsets-285868002.jpg"
+            alt="sun  image" height="100" width=""></li>
+    <li><img src="https://thumbs.dreamstime.com/b/famous-sunset-sainte-luce-stea-sea-small-village-along-saint-laurent-river-its-beautiful-sunsets-285868002.jpg"
+            alt="sun" height="100" width=""></li>
+</ol>
+<img src="https://thumbs.dreamstime.com/b/famous-sunset-sainte-luce-ste-sea-small-village-along-saint-laurent-river-its-beautiful-sunsets-285868002.jpg"
+    alt="sun image" height="100" wight="100"></li>
+<img src="https://thumbs.dreamstime.com/b/famous-sunset-sainte-luce-ste-sea-small-village-along-saint-laurent-river-its-beautiful-sunsets-285868002.jpg"
+    alt="sun image" height="100" wight="100"></li>
+<a href="https://www.google.com/" open google> <img
+        src="https://thumbs.dreamstime.com/b/famous-sunset-sainte-luce-ste-sea-small-village-along-saint-laurent-river-its-beautiful-sunsets-285868002.jpg"
+        alt="sun image" height="100" wight="100"></a>
+</li>
+
+</body>
+
+<table Style="border: 1px Solid Black">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Roll no</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>prasanna</td>
+            <td>bsc</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>Lavanya</td>
+            <td>data science</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>Maha Lakshmi</td>
+            <td>electronics</td>
+            <td>22</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <td colspan="3">This is my data</td>
+    </tfoot>
+</table>
+<video src="92366-635675638.mp4" controls Width="320" height="240" muted></video>
+<audio src="sample.mp3" controls width="320" height="240" muted></audio>
+<table>
+    <tr>
+        <th>Fruit</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>Apple</td>
+        <td>Andhra</td>
+    </tr>
+    <tr>
+        <td>Banana</td>
+        <td>Ap</td>
+    </tr>
+    <td colspan="3">This is my fruits</td>
+</table>
+
+</html>
