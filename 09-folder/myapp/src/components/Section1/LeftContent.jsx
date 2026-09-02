@@ -1,10 +1,10 @@
 import React from 'react'
 import HeroText from './HeroText'
-import arrow from './arrow'
+import Arrow from './Arrow'
 
 const LeftContent = () => {
   return (
-    <div>
+    <div className='h-full flex flex-col justify-between w-1/3'>
       <HeroText/>
       <Arrow/>
     </div>
